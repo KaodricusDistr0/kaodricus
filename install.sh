@@ -1,5 +1,7 @@
 #!/bin/sh
 
+mkdir bin
+cd bin/
 wget http://ftp.gnu.org/gnu/autoconf/autoconf-2.68.tar.bz2
 wget http://ftp.gnu.org/gnu/automake/automake-1.11.3.tar.xz
 wget http://ftp.gnu.org/gnu/bash/bash-4.2.tar.gz
