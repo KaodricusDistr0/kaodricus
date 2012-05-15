@@ -1,4 +1,4 @@
 kaodricus
 =========
 
-Linux distribution from scratch.
+Linux distribution from scratch
