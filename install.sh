@@ -40,7 +40,7 @@ wget http://www.kernel.org/pub/linux/kernel/v3.x/linux-3.2.6.tar.xz
 wget http://ftp.gnu.org/gnu/m4/m4-1.4.16.tar.bz2
 wget http://ftp.gnu.org/gnu/make/make-3.82.tar.bz2
 wget http://download.savannah.gnu.org/releases/man-db/man-db-2.6.1.tar.gz
-wget http://man7.org/linux/download/man-pages/man-pages-3.35.tar.gz
+wget http://www.kernel.org/pub/linux/docs/man-pages/man-pages-3.35.tar.gz
 wget http://www.multiprecision.org/mpc/download/mpc-0.9.tar.gz
 wget http://www.mpfr.org/mpfr-3.1.0/mpfr-3.1.0.tar.bz2
 wget ftp://ftp.gnu.org/gnu/ncurses/ncurses-5.9.tar.gz
@@ -61,7 +61,7 @@ wget http://www.linuxfromscratch.org/lfs/downloads/7.1/udev-config-20100128.tar.
 wget http://www.kernel.org/pub/linux/utils/util-linux/v2.20/util-linux-2.20.1.tar.bz2
 wget ftp://ftp.vim.org/pub/vim/unix/vim-7.3.tar.bz2
 wget http://tukaani.org/xz/xz-5.0.3.tar.bz2
-wget http://www.zlib.net/zlib-1.2.6.tar.bz2
+wget http://downloads.sourceforge.net/project/libpng/zlib/1.2.6/zlib-1.2.6.tar.bz2
 wget http://www.linuxfromscratch.org/patches/lfs/7.1/bash-4.2-fixes-4.patch
 wget http://www.linuxfromscratch.org/patches/lfs/7.1/bzip2-1.0.6-install_docs-1.patch
 wget http://www.linuxfromscratch.org/patches/lfs/7.1/coreutils-8.15-i18n-1.patch
