@@ -39,6 +39,20 @@ make
 make install
 ln -vs libgcc.a `$LFS_TGT-gcc -print-libgcc-file-name | \
 sed 's/libgcc/&_eh/'`
+cd ..
+rm -rf gcc-4.6.2
+rm -rf gcc-build
+
+#linux headers installation
+tar -xf linux-3.2.6.tar.xz
+cd linux-3.2.6
+make mrproper
+make headers_check
+make INSTALL_HDR_PATH=dest header_install
+cp -rv dest/include/* /tools/include
+cd ..
+rm -rf linux-3.2.6
+
 
 
 
