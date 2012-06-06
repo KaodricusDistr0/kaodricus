@@ -53,6 +53,54 @@ cp -rv dest/include/* /tools/include
 cd ..
 rm -rf linux-3.2.6
 
+#glibc installation 
+tar -xf glibc-2.14.1.tar.bz2
+cd glibc-2.14.1
+patch -Np1 -i ../glibc-2.14.1-gcc_fix-1.patch
+patch -Np1 -i ../glibc-2.14.1-cpuid-1.patch
+mkdir -v ../glibc-build
+cd ../glibc-build
+case `uname -m` in
+i?86) echo "CFLAGS += -march=i486 -mtune=native" > configparms ;;
+esac
+../glibc-2.14.1/configure --prefix=/tools \
+--host=$LFS_TGT --build=$(../glibc-2.14.1/scripts/config.guess) \
+--disable-profile --enable-add-ons \
+--enable-kernel=2.6.25 --with-headers=/tools/include \
+libc_cv_forced_unwind=yes libc_cv_c_cleanup=yes
+make
+make install
+cd ..
+rm -rf glibc-build
+rm -rf glibc-2.14.1
+
+#adjusting the loolchaint
+SPECS=`dirname $($LFS_TGT-gcc -print-libgcc-file-name)`/specs
+$LFS_TGT-gcc -dumpspecs | sed \
+-e 's@/lib\(64\)\?/ld@/tools&@g' \
+-e "/^\*cpp:$/{n;s,$, -isystem /tools/include,}" > $SPECS
+echo "New specs file is: $SPECS"
+unset SPECS
+
+#binutils pass2
+tar -jxf binutils-2.22.tar.bz2
+mkdir -v binutils-build
+cd binutils-build
+CC="$LFS_TGT-gcc -B/tools/lib/" \
+AR=$LFS_TGT-ar RANLIB=$LFS_TGT-ranlib \
+../binutils-2.22/configure --prefix=/tools \
+--disable-nls --with-lib-path=/tools/lib
+make
+make install
+make -C ld clean
+make -C ld LIB_PATH=/usr/lib:/lib
+cd ..
+rm -rf binutils-2.22
+rm -rf binutils-build
+
+#gcc pass2
+
+
 
 
 
