@@ -217,4 +217,23 @@ make install
 cd ..
 rm -rf ncurses-5.9
 
+#bash 4.2
+tar -xf bash-4.2.tar.gz
+cd bash-4.2
+patch -Np1 -i ../bash-4.2-fixes-8.patch
+./configure --prefix=/tools --without-bash-malloc
+make
+make install
+ln -vs bash /tools/bin/sh
+cd ..
+rm -rf bash-4.2
+
+#Bzip2
+tar -xf bzip2-1.0.6.tar.gz
+cd bzip2-1.0.6
+make
+make PREFIX=/tools install
+cd ..
+rm -rf bzip2-1.0.6
+
 
