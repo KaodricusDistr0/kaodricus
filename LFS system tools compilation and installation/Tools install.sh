@@ -207,4 +207,14 @@ rm -rf expect5.45
 rm -rf dejagnu-1.5
 rm -rf check-0.9.8
 
+#ncurses
+tar -xf ncurses-5.9.tar.gz
+cd ncurses-5.9
+./configure --prefix=/tools --with-shared \
+--without-debug --without-ada --enable-overwrite
+make
+make install
+cd ..
+rm -rf ncurses-5.9
+
 
